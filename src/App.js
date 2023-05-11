@@ -7,7 +7,7 @@ function App() {
   const [apiData, setApiData] = useState('');
 
   async function getDataFromApi() {
-    const response = await fetch("http://localhost:8000/api/v0/timetable/?station_name=haddonfield&direction=wb");
+    const response = await fetch("https://patco-api.planninglab.org/api/v0/timetable/?station_name=haddonfield&direction=wb");
     const jsonData = await response.json();
     return jsonData
   }
