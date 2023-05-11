@@ -1,7 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [apiData, setApiData] = useState('');
+
+  async function getDataFromApi() {
+    const response = await fetch("http://localhost:8000/api/v0/timetable/?station_name=haddonfield&direction=wb");
+    const jsonData = await response.json();
+    return jsonData
+  }
+
+  // getDataFromApi();
+
+  useEffect(() => {
+    getDataFromApi()
+    .then(data =>
+
+      setApiData(data.upcoming_times)
+      );
+   }, [])
+ 
+  
+
   return (
     <div className="App">
       <header className="App-header">
@@ -15,7 +37,8 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Hello world
+          {apiData}
         </a>
       </header>
     </div>
