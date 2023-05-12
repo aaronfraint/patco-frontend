@@ -6,6 +6,7 @@ export const appSlice = createSlice({
     value: 0,
     foo: "bar",
     selectedStation: "haddonfield",
+    selectedDirection: "wb",
     apiData: null,
   },
   reducers: {
@@ -15,10 +16,14 @@ export const appSlice = createSlice({
     setApiData: (state, action) => {
       state.apiData = action.payload;
     },
+    setSelectedDirection: (state, action) => {
+      state.selectedDirection = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelectedStation, setApiData } = appSlice.actions;
+export const { setSelectedStation, setApiData, setSelectedDirection } =
+  appSlice.actions;
 
 export default appSlice.reducer;
