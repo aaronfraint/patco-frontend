@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { Container, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./App.css";
 import { ListOfTimes } from "./components/single_station_times/listOfTimes";
 import { SelectStation } from "./components/shared/selectStation";
 
+import { setApiData } from "./store/appSlice";
+
 function App() {
   const selectedStation = useSelector((state) => state.app.selectedStation);
-  // const dispatch = useDispatch();
+  const apiData = useSelector((state) => state.app.apiData);
+  const dispatch = useDispatch();
 
-  const [apiData, setApiData] = useState("");
+  // const [apiData, setApiData] = useState("");
 
   async function getDataFromApi() {
     const response = await fetch(
@@ -20,10 +23,10 @@ function App() {
     return jsonData;
   }
 
-  // getDataFromApi();
+  getDataFromApi();
 
   useEffect(() => {
-    getDataFromApi().then((data) => setApiData(data.upcoming_times));
+    getDataFromApi().then((data) => dispatch(setApiData(data.upcoming_times)));
   }, [selectedStation]);
 
   return (
