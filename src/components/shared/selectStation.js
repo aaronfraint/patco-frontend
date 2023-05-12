@@ -1,12 +1,19 @@
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useState } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { setSelectedStation } from "../../store/appSlice";
+
 function SelectStation() {
-  const [selectedStation, setSelectedStation] = useState("");
+  const selectedStation = useSelector((state) => state.app.selectedStation);
+  const dispatch = useDispatch();
+
+  // const [selectedStation, setSelectedStation] = useState("");
 
   function handleChange(e) {
     console.log(e);
-    setSelectedStation(e.target.value);
+    dispatch(setSelectedStation(e.target.value));
   }
 
   return (
