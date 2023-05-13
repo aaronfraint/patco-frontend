@@ -1,5 +1,4 @@
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -17,7 +16,7 @@ function SelectStation() {
   }
 
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth style={{ maxWidth: "70%" }}>
       <InputLabel id="demo-simple-select-label">Select a station</InputLabel>
       <Select
         labelId="demo-simple-select-label"
