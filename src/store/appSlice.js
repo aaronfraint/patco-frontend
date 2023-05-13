@@ -3,8 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 export const appSlice = createSlice({
   name: "counter",
   initialState: {
-    value: 0,
-    foo: "bar",
     selectedStation: "haddonfield",
     selectedDirection: "wb",
     apiData: null,
