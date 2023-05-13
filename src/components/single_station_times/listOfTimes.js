@@ -25,21 +25,20 @@ function Entry({ data }) {
       return `${hours.toFixed(2)} hours away`;
     }
   }
+  const timeAsText = formatTime(data.stop_time);
 
-  const timeAsText = formatTime(data[0]);
-
-  const timeAway = formatTimeAway(data[1]);
+  const timeAway = formatTimeAway(data.seconds_away);
 
   return (
     <li>
-      {timeAsText} : {timeAway}
+      {timeAsText} ... {timeAway}
     </li>
   );
 }
 
 function ListOfTimes({ dataList }) {
   const list = dataList.map((element) => (
-    <Entry data={element} key={element} />
+    <Entry data={element} key={element.stop_time} />
   ));
   return <ul>{list}</ul>;
 }
