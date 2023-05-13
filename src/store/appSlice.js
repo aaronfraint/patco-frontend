@@ -5,6 +5,7 @@ export const appSlice = createSlice({
   initialState: {
     selectedStation: "haddonfield",
     selectedDirection: "wb",
+    activeView: "single-station-list",
     apiData: null,
   },
   reducers: {
@@ -17,11 +18,18 @@ export const appSlice = createSlice({
     setSelectedDirection: (state, action) => {
       state.selectedDirection = action.payload;
     },
+    setActiveView: (state, action) => {
+      state.activeView = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelectedStation, setApiData, setSelectedDirection } =
-  appSlice.actions;
+export const {
+  setSelectedStation,
+  setApiData,
+  setSelectedDirection,
+  setActiveView,
+} = appSlice.actions;
 
 export default appSlice.reducer;
