@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Container, Typography, Fab } from "@mui/material";
+import { useEffect } from "react";
+import { Container, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./App.css";
@@ -7,6 +7,7 @@ import { ListOfTimes } from "./components/single_station_times/listOfTimes";
 import { SelectStation } from "./components/shared/selectStation";
 import { SelectDirection } from "./components/shared/selectDirection";
 import { setApiData } from "./store/appSlice";
+import { SwitchView } from "./components/shared/switchView";
 
 // const API_BASE_URL = "http://localhost:8000";
 const API_BASE_URL = "https://patco-api.planninglab.org";
@@ -16,8 +17,6 @@ function App() {
   const selectedDirection = useSelector((state) => state.app.selectedDirection);
   const apiData = useSelector((state) => state.app.apiData);
   const dispatch = useDispatch();
-
-  // const [apiData, setApiData] = useState("");
 
   async function getDataFromApi() {
     const response = await fetch(
@@ -40,9 +39,7 @@ function App() {
       <div className="flex">
         <Typography variant="h4">PATCO Schedule</Typography>
         <div>
-          <Fab variant="extended" color="primary">
-            switch to trip view
-          </Fab>
+          <SwitchView />
         </div>
       </div>
 
@@ -51,10 +48,12 @@ function App() {
       </Typography>
 
       <br />
-      <SelectStation />
-      <br />
-      <br />
-      <SelectDirection />
+      <div className="flex">
+        <SelectStation />
+        <br />
+        <br />
+        <SelectDirection />
+      </div>
       {apiData && <ListOfTimes dataList={apiData} />}
     </Container>
   );
