@@ -16,7 +16,7 @@ function SelectStation() {
   }
 
   return (
-    <FormControl fullWidth style={{ maxWidth: "70%" }}>
+    <FormControl fullWidth style={{ maxWidth: "50%" }}>
       <InputLabel id="demo-simple-select-label">Select a station</InputLabel>
       <Select
         labelId="demo-simple-select-label"
